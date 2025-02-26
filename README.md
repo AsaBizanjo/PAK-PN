@@ -36,7 +36,7 @@ You can get a suitable VM from:
 *   DigitalOcean ($5-10/month)
 *   Linode ($5-10/month)
 *   Vultr ($5-10/month)
-*   AWS EC2 (t3.micro or t3.small)
+*   AWS EC2 (12 months free trial)
 *   Azure B1s or B1ms
 *   For Cheaper Options Use https://lowendbox.com/ ($1 per month!)
 

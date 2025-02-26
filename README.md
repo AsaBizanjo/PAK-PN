@@ -81,7 +81,7 @@ Add the following to wg0.conf:
     PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
     PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
 
-Note: Replace `eth0` with your actual network interface (check with `ip a`).
+Note: Replace `eth0` with your actual network interface (check with command: `ip a`).
 
     # Start and enable WireGuard
     sudo systemctl enable wg-quick@wg0
@@ -127,6 +127,8 @@ Add the following to .env:
     # Collect static files
     python manage.py collectstatic
 
+NOTE: `replace your_server_ip with your server's domain`
+
 ### 5\. Set Up Gunicorn Service
 
     # Create systemd service file
@@ -144,13 +146,13 @@ Add the following:
     WorkingDirectory=/opt/wireguard_vpn
     ExecStart=/opt/wireguard_vpn/venv/bin/gunicorn --bind unix:/opt/wireguard_vpn/wireguard_vpn.sock your_project.wsgi:application
     Restart=on-failure
-    Environment="DJANGO_SETTINGS_MODULE=your_project.settings"
+    Environment="DJANGO_SETTINGS_MODULE=wireguard_project.settings"
     EnvironmentFile=/opt/wireguard_vpn/.env
     
     [Install]
     WantedBy=multi-user.target
 
-Note: Replace `your_project` with your actual Django project name.
+
 
     # Set permissions
     sudo chown -R www-data:www-data /opt/wireguard_vpn

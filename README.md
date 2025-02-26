@@ -94,7 +94,7 @@ Note: Replace `eth0` with your actual network interface (check with command: `ip
     sudo chown $USER:$USER /opt/wireguard_vpn
     
     # Clone the repository
-    git clone https://github.com/yourusername/wireguard-vpn-management.git /opt/wireguard_vpn
+    git clone https://github.com/AsaBizanjo/PAK-PN.git /opt/wireguard_vpn
     
     # Create and activate virtual environment
     cd /opt/wireguard_vpn

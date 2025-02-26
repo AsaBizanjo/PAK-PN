@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card">
+        <h1><i class="fas fa-user-plus"></i> Create Account</h1>
+        <p>Register to generate your personal VPN configuration.</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}
+                            <span style="color: var(--error);">*</span>
+                        {% endif %}
+                    </label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <small style="color: var(--text-secondary);">{{ field.help_text }}</small>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <p style="color: var(--error); font-size: 0.9rem;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn">
+                <i class="fas fa-user-plus"></i> Register
+            </button>
+        </form>
+    </div>
+    
+    <div class="card">
+        <p style="text-align: center;">
+            Already have an account? 
+            <a href="{% url 'login' %}" style="color: var(--accent-primary); text-decoration: none;">
+                <i class="fas fa-sign-in-alt"></i> Login here
+            </a>
+        </p>
+    </div>
+    
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Secure Access</h3>
+            <p>Your configuration is protected with strong authentication</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-key"></i></div>
+            <h3>Unique Keys</h3>
+            <p>Every user gets a dedicated unique configuration key</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-file-download"></i></div>
+            <h3>Easy Download</h3>
+            <p>Download your config file with a single click</p>
+        </div>
+    </div>
+{% endblock %}

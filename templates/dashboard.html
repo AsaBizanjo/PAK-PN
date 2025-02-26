@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1><i class="fas fa-shield-alt"></i> Your VPN Configuration</h1>
+    
+    <div class="card">
+        <h2><i class="fas fa-key"></i> Your VPN Configuration Details</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 1rem;">
+            <div>
+                <p><strong>VPN IP Address:</strong> <span class="key-display">{{ config.ip_address }}</span></p>
+                <p><strong>Created:</strong> {{ config.created_at|date:"F j, Y, g:i a" }}</p>
+                <p><small><em>Note: For security reasons, we don't display your private key.</em></small></p>
+            </div>
+            <a href="{% url 'download_config' %}" class="btn">
+                <i class="fas fa-download"></i> Download VPN Config
+            </a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h3><i class="fas fa-file-code"></i> Configuration Preview</h3>
+        <pre>{{ config_file_content }}</pre>
+    </div>
+    
+    <div class="card instructions">
+        <h3><i class="fas fa-info-circle"></i> How to Use Your VPN</h3>
+        <ol>
+            <li>
+                <strong>Download your configuration file</strong> 
+                <p>Click the "Download VPN Config" button above to save your configuration file.</p>
+            </li>
+            <li>
+                <strong>Install WireGuard client</strong>
+                <p>If you haven't already, install WireGuar (available on ios and android) on your device:</p>
+            </li>
+            <li>
+                <strong>Import your configuration</strong>
+                <p>You can import the configuration file using the WireGuard client app</p>
+            </li>
+            <li>
+                <strong>Connect to VPN</strong>
+                <p>Enable the connection in your WireGuard client to establish the VPN connection.</p>
+            </li>
+            <li>
+                <strong>Verify connection</strong>
+                <p>Check your connection by visiting a site that shows your IP address or using the command:</p>
+                <pre>curl ifconfig.me</pre>
+            </li>
+        </ol>
+    </div>
+    
+    <div class="card">
+        <h3><i class="fas fa-exclamation-triangle"></i> Important Security Information</h3>
+        <p>Your configuration file contains private keys and should be kept confidential. Never share this file with others.</p>
+        <p>If your device is lost or stolen, please contact the administrator to revoke your VPN access and generate a new configuration.</p>
+    </div>
+    
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+            <h3>High Performance</h3>
+            <p> Designed for speed and efficiency</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-lock"></i></div>
+            <h3>Strong Encryption</h3>
+            <p>State-of-the-art cryptography protects your data</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-globe"></i></div>
+            <h3>Secure Access</h3>
+            <p>Access resources securely from anywhere</p>
+        </div>
+    </div>
+{% endblock %}

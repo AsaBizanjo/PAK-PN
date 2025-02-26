@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card">
+        <h1><i class="fas fa-sign-in-alt"></i> Welcome to PAK-PN</h1>
+        <p>Log in to access your automatically generated VPN configuration.</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% for error in field.errors %}
+                        <p style="color: var(--error); font-size: 0.9rem;">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn">
+                <i class="fas fa-sign-in-alt"></i> Login & Get VPN Config
+            </button>
+        </form>
+    </div>
+    
+    <div class="card">
+        <p style="text-align: center;">
+            Don't have an account? 
+            <a href="{% url 'register' %}" style="color: var(--accent-primary); text-decoration: none;">
+                <i class="fas fa-user-plus"></i> Register here
+            </a>
+        </p>
+    </div>
+    
+    <div class="card">
+        <h3><i class="fas fa-magic"></i> Instant VPN Configuration</h3>
+        <p>Our system automatically generates your VPN configuration as soon as you log in. No waiting, no complex setup - just log in and download your ready-to-use config file.</p>
+    </div>
+    
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-robot"></i></div>
+            <h3>Fully Automated</h3>
+            <p>Config files generated automatically</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-user-lock"></i></div>
+            <h3>One Key Per User</h3>
+            <p>Each user gets a unique, secure config</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-download"></i></div>
+            <h3>Instant Download</h3>
+            <p>No waiting for approval or generation</p>
+        </div>
+    </div>
+{% endblock %}

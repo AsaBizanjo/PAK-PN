@@ -1,0 +1,11 @@
+asgiref==3.8.1
+backports.zoneinfo==0.2.1
+cffi==1.17.1
+cryptography==44.0.1
+Django==4.2.19
+django-ratelimit==4.1.0
+gunicorn==23.0.0
+packaging==24.2
+pycparser==2.22
+sqlparse==0.5.3
+typing-extensions==4.12.2

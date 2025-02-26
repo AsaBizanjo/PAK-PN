@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card" style="text-align: center;">
+        <div style="font-size: 4rem; color: var(--accent-primary); margin-bottom: 1rem;">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1>Successfully Logged Out</h1>
+        <p>Thank you for using WireConfig. Your session has been safely terminated.</p>
+        <a href="{% url 'login' %}" class="btn">
+            <i class="fas fa-sign-in-alt"></i> Log In Again
+        </a>
+    </div>
+    
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-lock"></i></div>
+            <h3>Secure Logout</h3>
+            <p>Your session has been terminated securely</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-history"></i></div>
+            <h3>Config Saved</h3>
+            <p>Your configuration is saved for next time</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-sign-in-alt"></i></div>
+            <h3>Easy Return</h3>
+            <p>Log back in anytime to access your config</p>
+        </div>
+    </div>
+{% endblock %}
